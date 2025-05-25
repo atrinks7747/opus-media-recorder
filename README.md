@@ -215,6 +215,21 @@ Browsers with issues:
 
 1. To build from the source, you need [Emscripten](https://github.com/kripken/emscripten), [yarn](https://yarnpkg.com), Python 2.7 or higher, and basic C program build systems such as [GNU Make](https://www.gnu.org/software/make/).
 
+```bash
+sudo apt update
+sudo apt install python3 git cmake python-is-python3 build-essential libopus-dev libsndfile1-dev autoconf automake libtool python3-distutils
+
+git clone https://github.com/emscripten-core/emsdk.git
+cd emsdk
+./emsdk install 1.39.10
+./emsdk activate 1.39.10
+source ./emsdk_env.sh
+cd ..
+
+git clone https://github.com/atrinks7747/opus-media-recorder
+cd opus-media-recorder
+```
+
 2. `yarn install` to install JavaScript dependencies.
 
 3. `yarn run build` to build. `yarn run build:production` to build files for distribution.
