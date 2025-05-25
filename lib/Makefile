@@ -32,6 +32,7 @@ $(addsuffix /autogen.sh, $(OPUS_DIR) $(OGG_DIR) $(SPEEX_DIR)) $(WEBM_DIR)/CMakeL
 $(OPUS_OBJ_LIB): $(OPUS_DIR) $(OPUS_DIR)/autogen.sh
 	cd $< && ./autogen.sh
 	cd $< && emconfigure ./configure \
+							--host=wasm32-unknown-emscripten \
 							--disable-extra-programs \
 							--disable-doc \
 							--disable-intrinsics \
@@ -45,7 +46,7 @@ $(OPUS_OBJ): $(OPUS_OBJ_LIB) $(LIB_BUILD_DIR)
 ## libogg
 $(OGG_OBJ_LIB): $(OGG_DIR) $(OGG_DIR)/autogen.sh
 	cd $< && ./autogen.sh
-	cd $< && emconfigure ./configure
+	cd $< && emconfigure ./configure --host=wasm32-unknown-emscripten
 	emmake make -C $<
 
 $(OGG_OBJ): $(OGG_OBJ_LIB) $(LIB_BUILD_DIR)
@@ -55,6 +56,7 @@ $(OGG_OBJ): $(OGG_OBJ_LIB) $(LIB_BUILD_DIR)
 $(SPEEX_OBJ_LIB): $(SPEEX_DIR) $(SPEEX_DIR)/autogen.sh
 	cd $< && ./autogen.sh
 	cd $< && emconfigure ./configure \
+							--host=wasm32-unknown-emscripten \
 							--disable-examples
 	emmake make -C $<
 
